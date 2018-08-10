@@ -2,7 +2,7 @@
 
 The simplest possible SparkJava web app (Hello World)
 
-* [javadocs](https://ucsb-cs56-pconrad.github.io/sparkjava-01/apidocs/)
+* [javadocs](https://ucsb-cs56-pconrad.github.io/sparkjava-01/apidocs/index.html)
 
 
 # To use
