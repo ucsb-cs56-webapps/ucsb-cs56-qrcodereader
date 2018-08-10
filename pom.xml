@@ -48,6 +48,7 @@
   </distributionManagement>
 
   <reporting>
+
     <plugins>
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
@@ -59,23 +60,42 @@
         </configuration>
       </plugin>
     </plugins>
+    
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.0.1</version>
+      </plugin>
+    </plugins>
+    
   </reporting>
 
   <build>
     <plugins>
-      
+
+      <!-- See: https://www.baeldung.com/executable-jar-with-maven -->
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-jar-plugin</artifactId>
-	<version>3.1.0</version>
-	<configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>edu.ucsb.cs56.pconrad.SparkDemo01</mainClass>
-            </manifest>
-          </archive>
-	</configuration>
+	<artifactId>maven-assembly-plugin</artifactId>
+	<executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <archive>
+                <manifest>
+		    <mainClass>edu.ucsb.cs56.pconrad.SparkDemo01</mainClass>
+                </manifest>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+          </execution>
+	</executions>
       </plugin>
       
     </plugins>
