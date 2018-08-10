@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!-- model version - always 4.0.0 for Maven 2.x POMs -->
+  <modelVersion>4.0.0</modelVersion>
+  
+
+    <!-- project coordinates - values which uniquely identify this project -->
+
+  <groupId>edu.ucsb.cs56.pconrad</groupId>
+  <artifactId>sparkjava-demo-01</artifactId>
+  <version>1.0</version>
+
+
+  <packaging>jar</packaging>
+  <name>sparkjava-demo-01</name>
+  
+  <url>https://ucsb-cs56-pconrad.github.io/sparkjava-01</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
+  <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sparkjava</groupId>
+      <artifactId>spark-core</artifactId>
+      <version>2.5</version>
+    </dependency>
+    
+  </dependencies>
+
+  <distributionManagement>
+    <site>
+      <id>website</id>
+      <url>file://${project.basedir}/docs/</url>
+    </site>
+  </distributionManagement>
+
+  <reporting>
+    <plugins>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-project-info-reports-plugin</artifactId>
+	<version>2.9</version>
+	<!-- SEE: https://stackoverflow.com/questions/28098566/maven-site-warning-the-repository-url-https-maven-repository-dev-java-net-no -->
+	<configuration>
+          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <build>
+    <plugins>
+      
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-jar-plugin</artifactId>
+	<version>3.1.0</version>
+	<configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>edu.ucsb.cs56.pconrad.SparkDemo01</mainClass>
+            </manifest>
+          </archive>
+	</configuration>
+      </plugin>
+      
+    </plugins>
+  </build>
+  
+</project>
+
+
