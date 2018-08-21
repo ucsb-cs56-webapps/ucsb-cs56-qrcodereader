@@ -1,8 +1,5 @@
 package edu.ucsb.cs56.pconrad;
 
-
-import static spark.Spark.*;
-
 /**
  * Hello world!
  *
@@ -15,6 +12,9 @@ public class SparkDemo01 {
 		System.out.println("");						  
 		System.out.println("In browser, visit: http://localhost:4567/hello");
 		System.out.println("");
-        get("/hello", (req, res) -> "Hello World");
+        spark.Spark.get("/hello", (req, res) -> "Hello World");
+		spark.Spark.get("/bye", (req, res) -> "Goodbye World");
+		spark.Spark.get("/yo", (req, res) -> "S'up World");
+		spark.Spark.get("/tension", (req, res) -> "Midterm next week.  No problem dude");		
     }
 }
