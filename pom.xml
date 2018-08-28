@@ -128,7 +128,8 @@
 	<configuration>
           <jdkVersion>1.8</jdkVersion>
           <!-- Use your own application name -->
-          <appName>cs56-m18-lab03-phill</appName> 
+	  <!-- at Heroku CLI, use heroku apps to list, or use Heroku Dashboard -->
+          <appName>ucsb-cs56-pconrad-08-28-18</appName> 
           <processTypes>
             <!-- Tell Heroku how to launch your application -->
             <!-- You might have to remove the ./ in front   -->
@@ -136,6 +137,8 @@
           </processTypes>
 	</configuration>
       </plugin>
+
+
 
       
     </plugins>
