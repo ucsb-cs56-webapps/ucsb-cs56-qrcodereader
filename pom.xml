@@ -42,7 +42,23 @@
       <artifactId>spark-core</artifactId>
       <version>2.5</version>
     </dependency>
-    
+    <!-- add zxing deoendencies -->
+    <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>core</artifactId>
+        <version>3.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>javase</artifactId>
+        <version>3.3.0</version>
+    </dependency>
+    <dependency>
+  	<groupId>com.google.firebase</groupId>
+  	<artifactId>firebase-admin</artifactId>
+  	<version>6.3.0</version>
+    </dependency>	
+
   </dependencies>
 
   <!-- For use with github pages, to publish the site to the /docs subdirectory -->
@@ -129,11 +145,11 @@
           <jdkVersion>1.8</jdkVersion>
           <!-- Use your own application name -->
 	  <!-- at Heroku CLI, use heroku apps to list, or use Heroku Dashboard -->
-          <appName>ucsb-cs56-pconrad-08-28-18</appName> 
+          <appName>ucsb-cs56-fuheng-08-28-18</appName> 
           <processTypes>
             <!-- Tell Heroku how to launch your application -->
             <!-- You might have to remove the ./ in front   -->
-            <web>java -jar ./target/sparkjava-demo-1.0-jar-with-dependencies.jar</web>
+            <web>java $JAVA_OPTS -jar target/sparkjava-demo-01-1.0-jar-with-dependencies.jar</web>
           </processTypes>
 	</configuration>
       </plugin>
