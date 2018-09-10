@@ -3,10 +3,13 @@
 Cloud Firestore(beta) is a scalable NoSQL database for web, mobile, etc. Cloud Firestire will keep our data in sync aross client apps and offers offline supportso that we can create responsive apps regredaless of our internet connectivity.
 
 TWO GOOD READINGS:
+
 https://cloud.google.com/firestore/
+
 https://firebase.google.com/docs/firestore/
 
-##Get Started 
+
+Get Started 
 
 1. [Go to Firebase](https://firebase.google.com/)
 * click get started
@@ -17,7 +20,7 @@ https://firebase.google.com/docs/firestore/
 3. Select **Test Mode** for your Cloud Firestore Security Rule. At later stage you might want to switch it into **Locked Mode**. Then click enable.
 
 
-##Set up the environment
+Set up the environment
 
 1. Add Firebase Admin SDK:
 
@@ -42,7 +45,7 @@ Use the same email address that you used for creating the new project on the Fir
 * Download the .json file and rename it into **credentials.json**. 
 * In the .gitignore add credentials.json
 
-###You do not want to upload the credentials.json file into github repo.
+You do not want to upload the credentials.json file into github repo.
 It contains private and sensitive information and you don't want other people to see it. 
 
 2. Add FIREBASE_JSON variable
@@ -61,7 +64,7 @@ public static String getFireBaseCredentials() {
 	throw new RuntimeException("no FireBase Credential found.");
     }
 
-** Finally inside the main function add:
+Finally inside the main function add:
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
