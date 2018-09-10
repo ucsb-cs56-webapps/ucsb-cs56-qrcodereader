@@ -56,9 +56,13 @@ export FIREBASE_JSON=`cat credentials.json`
 
 
 * Add this method inside spark01.java:  
+
 public static String getFireBaseCredentials() {
+
         ProcessBuilder processBuilder = new ProcessBuilder();
+	
         if (processBuilder.environment().get("FIREBASE_JSON") != null) {
+	
             return processBuilder.environment().get("FIREBASE_JSON");
         }
 	throw new RuntimeException("no FireBase Credential found.");
@@ -73,10 +77,15 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 
 InputStream serviceAccount = new ByteArrayInputStream(getFireBaseCredentials().getBytes("UTF-8"));
+
 	GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
+	
 	FirebaseOptions options = new FirebaseOptions.Builder()
+	
     	.setCredentials(credentials)
+	
     	.build();
+	
 	FirebaseApp.initializeApp(options);
 
 	Firestore db = FirestoreClient.getFirestore();
