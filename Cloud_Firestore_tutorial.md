@@ -71,9 +71,11 @@ public static String getFireBaseCredentials() {
 Finally inside the main function add:
 
 import com.google.auth.oauth2.GoogleCredentials;
+
 import com.google.cloud.firestore.Firestore;
 
 import com.google.firebase.FirebaseApp;
+
 import com.google.firebase.FirebaseOptions;
 
 InputStream serviceAccount = new ByteArrayInputStream(getFireBaseCredentials().getBytes("UTF-8"));
