@@ -84,28 +84,44 @@ InputStream serviceAccount = new ByteArrayInputStream(getFireBaseCredentials().g
 ## Add data and Read data
 * add
 DocumentReference docRef = db.collection("users").document("students");
+
 Map<String, Object> data = new HashMap<>();
+
 data.put("first", "XXX");
+
 data.put("last", "ZZZ");
+
 data.put("born",1997);
+
 ApiFuture<WriteResult> result = docRef.set(data);
 
 * read
 ApiFuture<QuerySnapshot> query = db.collection("users").get();
+	
 QuerySnapshot querySnapshot = query.get();
+
 List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+	
 for (QueryDocumentSnapshot document : documents) {
+
   System.out.println("User: " + document.getId());
+  
   System.out.println("First: " + document.getString("first"));
+  
   if (document.contains("middle")) {
+  
     System.out.println("Middle: " + document.getString("middle"));
   }
   System.out.println("Last: " + document.getString("last"));
+  
   System.out.println("Born: " + document.getLong("born"));
 }
 
+
 ## Reference
+
 https://firebase.google.com/docs/firestore/quickstart
+
 https://cloud.google.com/docs/authentication/production#auth-cloud-implicit-java
 
 
