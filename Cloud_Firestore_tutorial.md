@@ -50,7 +50,7 @@ It contains private and sensitive information and you don't want other people to
 
 2. Add FIREBASE_JSON variable
 
-*create a setup.sh file to set the environment variable FIREBASE_JSON:
+* create a setup.sh file to set the environment variable FIREBASE_JSON:
 
 export FIREBASE_JSON=`cat credentials.json`
 
