@@ -20,22 +20,24 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.common.collect.ImmutableMap;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
+import java.io.ByteArrayInputStream;
+
+import java.util.*;
 /**
  * Hello world!
  *
  */
 
 public class SparkDemo01 {
-   private static String projectId="qrcodereader-1111";
-   // private String crendentials="AzaSyDNLf6LLbpjZesvg9XX0puaP5d59Jp6xXA";
-
-    public static void main(String[] args) throws java.io.IOException {
-	// Use the application default credentials
-	GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
+   
+    public static void main(String[] args) throws Exception {
+	InputStream serviceAccount = new ByteArrayInputStream(getFireBaseCredentials().getBytes("UTF-8"));
+	GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
 	FirebaseOptions options = new FirebaseOptions.Builder()
     	.setCredentials(credentials)
-    	.setProjectId(projectId)
     	.build();
 	FirebaseApp.initializeApp(options);
 
@@ -46,13 +48,30 @@ public class SparkDemo01 {
 	Map<String, Object> data = new HashMap<>();
 	data.put("first", "Ada");
 	data.put("last", "Lovelace");
-	data.put("born", 1815);
+	data.put("born", 1820);
 	//asynchronously write data
 	ApiFuture<WriteResult> result = docRef.set(data);
 	// ...
 	// result.get() blocks on response
-	//System.out.println("Update time : " + result.get().getUpdateTime());
-
+	
+	System.out.println("Update time : " + result.get().getUpdateTime());
+	
+	// asynchronously retrieve all users
+	ApiFuture<QuerySnapshot> query = db.collection("users").get();
+	// ...
+	// query.get() blocks on response
+	QuerySnapshot querySnapshot = query.get();
+	List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+	for (QueryDocumentSnapshot document : documents) {
+  	System.out.println("User: " + document.getId());
+  	System.out.println("First: " + document.getString("first"));
+  	if (document.contains("middle")) {
+    	System.out.println("Middle: " + document.getString("middle"));
+ 	 }
+ 	System.out.println("Last: " + document.getString("last"));
+  	System.out.println("Born: " + document.getLong("born"));
+	}
+	
 
 
         port(getHerokuAssignedPort());
@@ -77,6 +96,16 @@ public class SparkDemo01 {
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+    public static String getFireBaseCredentials() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("FIREBASE_JSON") != null) {
+            return processBuilder.environment().get("FIREBASE_JSON");
+        }
+	throw new RuntimeException("no FireBase Credential found.");
+	
+         
+    }
+
 
 	
 }
