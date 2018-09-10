@@ -128,6 +128,12 @@ for (QueryDocumentSnapshot document : documents) {
   System.out.println("Born: " + document.getLong("born"));
 }
 
+## We also need to add the vriable FIREBASE_JSON inside Heroku
+1. Go to heroku console and add the varaible FIREBASE_JSON and then copy and paste the content insde crendentials.json into the FIREBASE_JSON
+
+2. Or you can use:
+
+heroku config:set FIREBASE_JSON=`cat credentials.json`
 
 ## Reference
 
