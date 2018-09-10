@@ -1,6 +1,7 @@
 # What is Cloud Firestore
 
 Cloud Firestore(beta) is a scalable NoSQL database for web, mobile, etc. Cloud Firestire will keep our data in sync aross client apps and offers offline supportso that we can create responsive apps regredaless of our internet connectivity.
+
 TWO GOOD READINGS:
 https://cloud.google.com/firestore/
 https://firebase.google.com/docs/firestore/
