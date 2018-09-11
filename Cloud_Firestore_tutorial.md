@@ -32,13 +32,13 @@ compile 'com.google.firebase:firebase-admin:6.4.0'
 
 * Using Maven: 
 
-ADD:
+In dependency ADD:
 
-<dependency>
+
   <groupId>com.google.firebase</groupId>
   <artifactId>firebase-admin</artifactId>
   <version>6.4.0</version>
-</dependency>
+
 
 
 ## Initialize Cloud Firestore
