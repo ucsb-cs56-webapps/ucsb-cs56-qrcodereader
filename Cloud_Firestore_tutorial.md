@@ -36,7 +36,9 @@ In dependency ADD:
 
 
   <groupId>com.google.firebase</groupId>
+  
   <artifactId>firebase-admin</artifactId>
+  
   <version>6.4.0</version>
 
 
