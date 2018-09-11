@@ -25,9 +25,11 @@ Set up the environment
 1. Add Firebase Admin SDK:
 
 * Using Gradle: 
+
 compile 'com.google.firebase:firebase-admin:6.4.0'
 
 * Using Maven: 
+
 <dependency>
   <groupId>com.google.firebase</groupId>
   <artifactId>firebase-admin</artifactId>
