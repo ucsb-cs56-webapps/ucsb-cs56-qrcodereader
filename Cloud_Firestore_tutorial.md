@@ -65,22 +65,22 @@ It contains private and sensitive information and you don't want other people to
    export FIREBASE_JSON=`cat credentials.json`
    ```
 
-3. Add this method inside your Java code:
+3. Add this method inside your Java code to read the Firebase credentials 
+   from the `FIREBASE_JSON` environment variable:
 
 ```
-public static String getFireBaseCredentials() {
-
-        ProcessBuilder processBuilder = new ProcessBuilder();
-	
+  public static String getFireBaseCredentials() {
+        ProcessBuilder processBuilder = new ProcessBuilder();	
         if (processBuilder.environment().get("FIREBASE_JSON") != null) {
-	
             return processBuilder.environment().get("FIREBASE_JSON");
         }
 	throw new RuntimeException("no FireBase Credential found.");
     }
 ```
 
-Finally inside the main function add:
+Finally inside the main function add this code which takes the credentials from that method,
+instead of reading them from a file on the disk.  That's important because the only way to 
+securely get the credentials into a running Heroku app is via an environment variable.
 
 ```
 import com.google.auth.oauth2.GoogleCredentials;
